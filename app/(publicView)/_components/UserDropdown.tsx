@@ -4,7 +4,6 @@ import {
   Home,
   LayoutDashboardIcon,
   LogOutIcon,
-  // LogOutIcon,
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -19,9 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
-import { authClient } from "@/lib/auth-client";
+import { useSignOut } from "@/hooks/use-signout";
 
 interface iAppProps {
   name: string;
@@ -30,21 +27,8 @@ interface iAppProps {
 }
 
 export function UserDropdown({ email, image, name }: iAppProps) {
-  const router = useRouter();
-  // const { data: session } = authClient.useSession();
-  async function signOut() {
-    await authClient.signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          router.push("/");
-          toast.success("signed out successfully");
-        },
-        onError: () => {
-          toast.error("Failed to sign out");
-        },
-      },
-    });
-  }
+  const handleSignOut = useSignOut();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -95,7 +79,7 @@ export function UserDropdown({ email, image, name }: iAppProps) {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={signOut}>
+        <DropdownMenuItem onClick={handleSignOut}>
           <LogOutIcon size={16} className="opacity-60" aria-hidden="true" />
           <span>Logout</span>
         </DropdownMenuItem>

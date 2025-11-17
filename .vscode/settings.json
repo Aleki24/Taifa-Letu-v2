@@ -1,3 +1,7 @@
 {
-  "cSpell.words": ["arcjet", "tabler"]
+  "cSpell.words": ["arcjet", "tabler"],
+  "editor.formatOnSave": true,
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  }
 }
