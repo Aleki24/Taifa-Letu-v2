@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["arcjet", "tabler"],
+  "cSpell.words": ["arcjet", "tabler", "uuidv"],
   "editor.formatOnSave": true,
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
